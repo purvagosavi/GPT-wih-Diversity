@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef } from "react";
 import SimpleBar from "simplebar-react"
 import 'simplebar-react/dist/simplebar.min.css';
 import EditIcon from '@mui/icons-material/Edit';
+import backImge from '../../assets/cback.jpg';
+
 interface ChatHistoryProps {
     data: any[];
    
@@ -24,7 +26,8 @@ const SearchResult=({data=[]}:ChatHistoryProps )=>{
         style={{
             overflowX: 'hidden',
             height: 'calc(100vh - 430px)',
-            minHeight: 420
+            minHeight: 420,
+            backgroundImage: `url(${backImge})`
         }}
         >
              <Grid container spacing={2.5} ref={wrapper}>

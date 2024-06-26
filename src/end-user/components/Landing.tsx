@@ -1,7 +1,8 @@
-import { Avatar, Box, Card, CardContent, CardHeader, Grid, IconButton, InputAdornment, TextField } from "@mui/material";
+import {  Box, Card, CardContent,  Grid, IconButton,  TextField,FormControl} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchResult from "./SearchResult";
-import { Formik } from "formik";
+import { Formik ,Form} from "formik";
+import EnmaRating from "./Rating";
 
 const Landing=()=>{
     
@@ -20,7 +21,7 @@ const Landing=()=>{
 
     <Grid>
     <Card>
-    <CardHeader
+    {/* <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">
             LG
@@ -28,42 +29,14 @@ const Landing=()=>{
         }
         action={
           <IconButton aria-label="settings">
-            {/* <MoreVertIcon /> */}
+
           </IconButton>
         }
         title="Enma Smart"
-        // subheader="September 14, 2016"
-      />
+      /> */}
 
-      </Card>
-      </Grid>
-
-        <Grid>
-            <Card sx={{
-          
-            height: `calc(100vh - 400px)`,
-           
-          
-          }}>
-                <CardContent>
-                <Grid container direction={"row"} justifyContent={"space-between"} xs={12}>
-                    <Grid item sx={{ borderRight: 1,height: `calc(100vh - 450px)` }} xs={6}>
-                        <Box  >
-                            <SearchResult data={[]} />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Box>
-                            <SearchResult data={[]} />
-                        </Box>    
-                    </Grid>
-                </Grid>
-                </CardContent>
-            </Card>
-        </Grid>
-
-      <Grid>
-        <Card>
+    <Grid>
+        <Card style={{background:'#fdf5f5'}} >
             <CardContent>
             <Formik
                 initialValues={{ search: '' }}
@@ -89,35 +62,69 @@ const Landing=()=>{
                     isSubmitting,
                     /* and other goodies */
                 }) => (
-                    <form onSubmit={handleSubmit}>
-                    <Grid container direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
+                    <Form onSubmit={handleSubmit}>
+                    <Grid container direction={"row"} justifyContent={"space-between"} alignItems={"center"} spacing={1} paddingTop={2} paddingX={2}>
                         <Grid xs={11}>
+                        <FormControl sx={{ width: '100%' }}>
                             <TextField 
                             id="search-bar"
-                            className="form-control border-0 shadow-none"
+                            className="form-control border-0 shadow-none "
                             onInput={(e) => {
                                 // setSearchQuery(e.target.value);
                             }}
-                            // label="Enter a city name"
-                            variant="outlined"
-                            placeholder="Search..."
+                            multiline
+                            variant="standard"
+                            placeholder="Type a message........."
                             size="small"
                             fullWidth
                             />
+                            </FormControl>
                         </Grid>
-                        <Grid xs={1}>
+                        <Grid xs={1} paddingLeft={5} alignItems={"self-end"}>
                             <IconButton type="submit" aria-label="search">
                                 <SearchIcon style={{ fill: "blue" }} />
                             </IconButton>
                         </Grid>
                     </Grid>
-                    </form>
+                    </Form>
                 )}
                 </Formik>
                 
             </CardContent>
         </Card>
       </Grid>
+
+      </Card>
+      </Grid>
+
+
+    {/* Srearch Grid */}
+        <Grid>
+            <Card sx={{
+          
+            height: `calc(100vh - 400px)`,
+           
+          
+          }}>
+                <CardContent>
+                <Grid container direction={"row"} justifyContent={"space-between"} xs={12}>
+                    <Grid item sx={{ borderRight: 1,height: `calc(100vh - 450px)` }} xs={6}>
+                        <Box  >
+                            <SearchResult data={[]} />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Box>
+                            <SearchResult data={[]} />
+                        </Box>    
+                    </Grid>
+                </Grid>
+                </CardContent>
+            </Card>
+        </Grid>
+
+    {/* Srearch Grid */}
+        <EnmaRating/>
       </Grid>
       </Box>
     </>);
